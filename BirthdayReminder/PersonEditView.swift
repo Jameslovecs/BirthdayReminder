@@ -19,11 +19,13 @@ struct PersonEditView: View {
     @State private var isEnabled: Bool = true
     
     let person: Person?
+    let onSave: (() -> Void)?
     
     private let genderOptions = ["Any", "Boy", "Girl"]
     
-    init(person: Person?) {
+    init(person: Person?, onSave: (() -> Void)? = nil) {
         self.person = person
+        self.onSave = onSave
         if let person = person {
             _name = State(initialValue: person.name)
             _relation = State(initialValue: person.relation)
@@ -81,6 +83,7 @@ struct PersonEditView: View {
             )
             modelContext.insert(newPerson)
         }
+        onSave?()
         dismiss()
     }
 }
