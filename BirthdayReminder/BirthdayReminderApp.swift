@@ -26,6 +26,9 @@ struct BirthdayReminderApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .task {
+                    await NotificationManager.shared.requestAuthorizationIfNeeded()
+                }
         }
         .modelContainer(sharedModelContainer)
     }

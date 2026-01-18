@@ -31,6 +31,12 @@ struct ContentView: View {
             }
             .navigationTitle("Birthday Reminder")
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Test Notification") {
+                        NotificationManager.shared.scheduleTestNotification()
+                    }
+                    .font(.caption)
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { showingAddPerson = true }) {
                         Image(systemName: "plus")
