@@ -34,7 +34,9 @@ struct ContentView: View {
                 #endif
                 
                 ForEach(sortedPeople) { person in
-                    PersonRowView(person: person)
+                    NavigationLink(destination: PersonDetailView(person: person)) {
+                        PersonRowView(person: person)
+                    }
                 }
                 .onDelete { offsets in
                     deletePeople(offsets: offsets, sortedPeople: sortedPeople)
